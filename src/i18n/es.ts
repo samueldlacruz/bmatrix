@@ -15,6 +15,7 @@ export const es = {
     home: '← Inicio',
     lock: '🔒 Bloquear',
     edit: '✏️ Editar',
+    desktopHint: 'Para una mejor experiencia, usa BMatrix en Desktop',
   },
   common: {
     downloadPdf: 'Descargar PDF',

@@ -149,30 +149,30 @@ export default function MatrixPage() {
         <LanguageToggle />
       </div>
 
-      <header className="py-8 px-6 border-b border-navy/10 no-print">
-        <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <Link to="/" className="text-navy/40 hover:text-navy transition-colors font-body text-base">
+      <header className="py-4 sm:py-8 px-4 sm:px-6 border-b border-navy/10 no-print">
+        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div className="flex items-center gap-3 sm:gap-4">
+            <Link to="/" className="text-navy/40 hover:text-navy transition-colors font-body text-sm sm:text-base">
               {t('matrix.home')}
             </Link>
-            <div className="w-px h-8 bg-navy/10"></div>
-            <div className="flex items-center gap-4">
+            <div className="w-px h-8 bg-navy/10 hidden sm:block"></div>
+            <div className="flex items-center gap-3 sm:gap-4">
               <div
-                className={`w-12 h-12 flex items-center justify-center rounded-sm text-navy font-hand text-2xl font-bold ${config.colorClass}`}
+                className={`w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-sm text-navy font-hand text-xl sm:text-2xl font-bold ${config.colorClass}`}
               >
                 {config.icon}
               </div>
               <div>
-                <h1 className="font-hand text-4xl font-bold text-navy">{config.name}</h1>
-                <p className="text-base text-navy/50 font-body">{config.description}</p>
+                <h1 className="font-hand text-2xl sm:text-4xl font-bold text-navy">{config.name}</h1>
+                <p className="text-xs sm:text-base text-navy/50 font-body">{config.description}</p>
               </div>
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <button
               onClick={() => setEditable(!editable)}
-              className={`btn-outline ${editable ? 'bg-navy text-white' : ''}`}
+              className={`btn-outline text-sm sm:text-base ${editable ? 'bg-navy text-white' : ''}`}
             >
               {editable ? t('matrix.lock') : t('matrix.edit')}
             </button>
@@ -181,8 +181,15 @@ export default function MatrixPage() {
         </div>
       </header>
 
-      <main className="max-w-6xl mx-auto px-6 py-10">
-        <div ref={ref} className="p-10 bg-paper">
+      {/* Desktop hint - mobile only */}
+      <div className="sm:hidden bg-navy/5 border-b border-navy/10 px-4 py-2 text-center no-print">
+        <p className="text-xs text-navy/50 font-body">
+          🖥️ {t('matrix.desktopHint')}
+        </p>
+      </div>
+
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-10">
+        <div ref={ref} className="p-4 sm:p-10 bg-paper">
           {renderMatrix()}
         </div>
       </main>
