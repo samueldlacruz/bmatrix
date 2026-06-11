@@ -1,0 +1,211 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #F8F6F1;
+  --color-paper-dark: #EDE9E0;
+  --color-navy: #051C2C;
+  --color-navy-light: #0A3A5C;
+  --color-mckinsey-blue: #0066CC;
+
+  --color-hl-yellow: #FFF200;
+  --color-hl-pink: #FF6EC7;
+  --color-hl-green: #7CFC00;
+  --color-hl-orange: #FF9933;
+  --color-hl-blue: #00D4FF;
+  --color-hl-purple: #D580FF;
+
+  --font-hand: 'Caveat', cursive;
+  --font-body: 'Poppins', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-paper);
+  color: var(--color-navy);
+  min-height: 100vh;
+}
+
+/* ── Paper backgrounds ── */
+
+.paper-bg {
+  background-color: var(--color-paper);
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(5, 28, 44, 0.015) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(0, 102, 204, 0.01) 0%, transparent 50%);
+}
+
+.grid-paper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-paper);
+  background-image:
+    linear-gradient(rgba(0, 102, 204, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 102, 204, 0.06) 1px, transparent 1px),
+    linear-gradient(rgba(0, 102, 204, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 102, 204, 0.12) 1px, transparent 1px);
+  background-size:
+    20px 20px,
+    20px 20px,
+    100px 100px,
+    100px 100px;
+}
+
+.paper-grain {
+  position: relative;
+}
+
+.paper-grain::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+.paper-grain > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Highlighter classes ── */
+
+.hl-yellow { background-color: rgba(255, 242, 0, 0.35); }
+.hl-pink { background-color: rgba(255, 110, 199, 0.3); }
+.hl-green { background-color: rgba(124, 252, 0, 0.3); }
+.hl-orange { background-color: rgba(255, 153, 51, 0.3); }
+.hl-blue { background-color: rgba(0, 212, 255, 0.3); }
+.hl-purple { background-color: rgba(213, 128, 255, 0.3); }
+
+/* ── Hand-drawn borders ── */
+
+.hand-drawn {
+  border: 1.5px solid var(--color-navy);
+  border-radius: 2px;
+}
+
+.hand-drawn-accent {
+  border: 1.5px solid var(--color-mckinsey-blue);
+  border-radius: 2px;
+}
+
+/* ── Matrix cells ── */
+
+.matrix-cell {
+  border: 1px solid rgba(5, 28, 44, 0.2);
+  padding: 1rem;
+  min-height: 120px;
+  transition: background-color 0.2s;
+}
+
+.matrix-cell:hover {
+  background-color: rgba(5, 28, 44, 0.02);
+}
+
+.matrix-cell textarea {
+  width: 100%;
+  height: 100%;
+  min-height: 80px;
+  border: none;
+  background: transparent;
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  color: var(--color-navy);
+  resize: none;
+  outline: none;
+  line-height: 1.4;
+}
+
+.matrix-cell textarea::placeholder {
+  color: rgba(5, 28, 44, 0.3);
+  font-style: italic;
+}
+
+/* ── Buttons ── */
+
+.btn-primary {
+  background-color: var(--color-navy);
+  color: white;
+  font-family: var(--font-body);
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-navy-light);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-navy);
+  font-family: var(--font-body);
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  border: 1.5px solid var(--color-navy);
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-outline:hover {
+  background-color: var(--color-navy);
+  color: white;
+}
+
+/* ── Inputs ── */
+
+input[type="text"], input[type="number"] {
+  font-family: var(--font-hand);
+  font-size: 1.15rem;
+  border: none;
+  border-bottom: 1px solid rgba(5, 28, 44, 0.3);
+  background: transparent;
+  padding: 0.25rem 0;
+  outline: none;
+  color: var(--color-navy);
+}
+
+input[type="text"]:focus, input[type="number"]:focus {
+  border-bottom-color: var(--color-mckinsey-blue);
+}
+
+/* ── Animations ── */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: rotate(-3deg) translateY(0); }
+  50% { transform: rotate(-3deg) translateY(-8px); }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.float-animation {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* ── Print ── */
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: white; }
+}
